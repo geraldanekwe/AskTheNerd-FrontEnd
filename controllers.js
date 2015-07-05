@@ -47,8 +47,9 @@
             return $scope.isLoggedInUser;
           };
           $scope.isUserandLoggedIn = function() {
-            console.log($scope.isLoggedInUser && !$rootScope.activeUser);
-            return $scope.isLoggedInUser && !$rootScope.activeUser;
+            console.log($rootScope.activeUser);
+            console.log($scope.isLoggedInUser);
+            return $scope.isLoggedInUser;
           };
         }).catch(function(err) {
           console.error(err);
