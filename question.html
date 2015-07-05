@@ -10,7 +10,7 @@
     <div>{{singleQuestion.body}}</div>
   </div>
 </div>
-<button class="btn btn-primary" type="button" ng-hide="isUser()" ng-click="showAnswerForm()">
+<button class="btn btn-primary" type="button" ng-hide="isUserandLoggedIn()" ng-click="showAnswerForm()">
   Write Answer
 </button>
 <button class="btn btn-primary" type="button" ng-if="activateEditOrDelete()" ng-click="showEditForm()">

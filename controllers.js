@@ -46,6 +46,9 @@
           $scope.isUser = function() {
             return $scope.isLoggedInUser;
           };
+          $scope.isUserandLoggedIn = function() {
+            return $scope.isLoggedInUser && $rootScope.activeUser;
+          };
         }).catch(function(err) {
           console.error(err);
           $state.go("404");
