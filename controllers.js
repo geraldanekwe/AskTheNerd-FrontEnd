@@ -2,17 +2,18 @@
       $scope.logout = function() {
         User.logout($rootScope.activeUser);
       };
-      $scope.activeUser = function() {
-        return User.activeUser();
-      };
+      // $scope.activeUser = function() {
+      //   return User.activeUser();
+      // };
+
     })
     .controller('NewQuestionCtrl', function($scope, Question, User, $state, $rootScope) {
       User.init();
       $scope.question = {};
       $scope.question.email = $rootScope.activeUser || "Login to Ask the Nerds";
-      $scope.activeUser = function() {
-        return User.activeUser();
-      };
+      // $scope.activeUser = function() {
+      //   return User.activeUser();
+      // };
       $scope.askQuestion = function() {
         Question.addQuestion($scope.question)
           .success(function(data) {
@@ -55,12 +56,10 @@
           $state.go("404");
         });
 
-      $scope.activeUser = function() {
-        return User.activeUser();
-      };
+
 
       $scope.editQuestion = function() {
-        // Question.editQuestion();
+        console.log($scope.question);
 
 
         $scope.isEditClicked = !$scope.isEditClicked;
@@ -81,7 +80,9 @@
         });
       };
     })
-    .controller('MainCtrl', function($scope, Question) {
+    .controller('MainCtrl', function($scope, Question, User) {
+      User.init();
+
       Question.getAll().success(function(data) {
         $scope.questions = data;
       }).catch(function(err) {

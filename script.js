@@ -37,8 +37,8 @@ app.constant("ATN", {
         controller: "UserCtrl"
       })
       .state('logout', {
-        url: "/logout",
-        templateUrl: "logout.html",
+        url: "/login",
+        templateUrl: "login.html",
         controller: ""
       })
       .state('question', {

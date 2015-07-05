@@ -3,6 +3,7 @@ app.factory('User', function($http, ATN, $state, $rootScope) {
       init: function() {
         ATN.fbRef.onAuth(function(authData) {
           if (authData) {
+            $rootScope.authData = authData;
             $rootScope.activeUser = authData.password.email;
           }
         });
@@ -30,7 +31,8 @@ app.factory('User', function($http, ATN, $state, $rootScope) {
       logout: function(user) {
 
         $state.go('logout');
-        return ATN.fbRef.unauth();
+        ATN.fbRef.unauth();
+        $rootScope.activeUser = !$rootScope.activeUser;
       },
       activeUser: function() {
         console.log('whathappened?');
@@ -63,4 +65,4 @@ app.factory('User', function($http, ATN, $state, $rootScope) {
         return $http.post(ATN.API_URL + "/questions/" + slug + "/answers", newAnswer);
       }
     }
-  })
+  });

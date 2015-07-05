@@ -13,11 +13,11 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           <form class="login">
-            <a ui-sref="login" ng-show="activeUser()" class="btn btn-primary navbar-btn btn-sm" id="login-btn">Login</a>
+            <a ui-sref="login" ng-hide="activeUser" class="btn btn-primary navbar-btn btn-sm" id="login-btn">Login</a>
           </form>
         </li>
         <li id="logout-btn">
-          <form><a class="btn btn-primary navbar-btn btn-sm" ng-hide="activeUser()
+          <form><a class="btn btn-primary navbar-btn btn-sm" ng-hide="!activeUser
 " ng-click="logout()">Logout</a></form>
         </li>
         <li id="signup-btn">
