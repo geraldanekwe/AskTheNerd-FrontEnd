@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="heimdall">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ask The Nerd</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/slate/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="/favicon.ico">
+</head>
+
+<body>
+  <div class='container'>
+    <nav class="navbar navbar-inverse" ng-controller="NavbarCtrl">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" ui-sref="home">Ask the Nerds</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="login">
+                <a ui-sref="login" class="btn btn-primary navbar-btn btn-sm" id="login-btn">Login</a>
+              </form>
+            </li>
+            <li id="logout-btn">
+              <form><a class="btn btn-primary navbar-btn btn-sm" ng-disabled="activeUser()" ng-click="logout()">Logout</a></form>
+            </li>
+            <li id="signup-btn">
+              <form><a ui-sref="signup" class="btn btn-primary navbar-btn btn-sm">Sign Up</a></form>
+            </li>
+            <li>
+              <form><a ui-sref="new" class="btn btn-primary navbar-btn btn-sm">Ask Question</a></form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div ui-view></div>
+  </div>
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
