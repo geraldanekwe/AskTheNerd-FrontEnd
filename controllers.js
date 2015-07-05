@@ -2,6 +2,7 @@
       $scope.logout = function() {
         User.logout($rootScope.activeUser);
       };
+      $scope.isLoggedInUser = $rootScope.activeUser === $scope.singleQuestion.email;
       $scope.isUser = function() {
         return $scope.isLoggedInUser;
       };
