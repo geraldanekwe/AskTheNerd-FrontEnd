@@ -1,7 +1,4 @@
 <div class="media">
-  <button class="btn btn-primary" type="button" ng-if="activateDelete()" ng-click="deleteQuestion()">
-    Delete Question
-  </button>
   <div class="media-left">
     <a href="#">
       <img class="media-object" ng-src="{{question.gravatarUrl}}">
@@ -13,32 +10,16 @@
     <div>{{question.body}}</div>
   </div>
 </div>
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" ng-hide="isUser()">
   Write Answer
 </button>
-<div class="collapse" id="collapseExample">
-  <div class="well">
-    <form class="form-horizontal" accept-charset="UTF-8" method="post" ng-submit="addAnswer()">
-      <div class="form-group">
-        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-        <div class="col-sm-10">
-          <input type="email" ng-model="answer.email" value="" class="form-control" id="inputEmail" placeholder="Email" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputQuestion" class="col-sm-2 control-label">Answer</label>
-        <div class="col-sm-10">
-          <textarea class="form-control" ng-model="answer.body" id="inputQuestion" placeholder="Your answer here" required></textarea>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10 col-sm-offset-2">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+<button class="btn btn-primary" type="button" ng-if="activateEditOrDelete()" ng-click="editQuestion()" ng->
+  Edit Question
+</button>
+<button class="btn btn-primary" type="button" ng-if="activateEditOrDelete()" ng-click="deleteQuestion()">
+  Delete Question
+</button>
+<entry-form ng-show="editQuestion()"></entry-form>
 <br>
 <br>
 <div class="boxes">
