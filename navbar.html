@@ -17,15 +17,13 @@
           </form>
         </li>
         <li id="logout-btn">
-          <form><a class="btn btn-primary navbar-btn btn-sm" ng-hide="!activeUser
-" ng-click="logout()">Logout</a></form>
+          <form><a class="btn btn-primary navbar-btn btn-sm" ng-hide="isUser()" ng-click="logout()">Logout</a></form>
         </li>
         <li id="signup-btn">
           <form><a ui-sref="signup" class="btn btn-primary navbar-btn btn-sm">Sign Up</a></form>
         </li>
         <li>
-          <form><a ui-sref="new" class="btn btn-primary navbar-btn btn-sm" ng-hide="!activeUser
-">Ask Question</a></form>
+          <form><a ui-sref="new" class="btn btn-primary navbar-btn btn-sm" ng-hide="isUser()">Ask Question</a></form>
         </li>
       </ul>
     </div>
