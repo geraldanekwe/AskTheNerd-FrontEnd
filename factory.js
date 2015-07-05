@@ -28,10 +28,12 @@ app.factory('User', function($http, ATN, $state, $rootScope) {
         });
       },
       logout: function(user) {
+
         $state.go('logout');
         return ATN.fbRef.unauth();
       },
       activeUser: function() {
+        console.log('whathappened?');
         return $rootScope.activeUser === undefined;
       }
     }
@@ -48,7 +50,7 @@ app.factory('User', function($http, ATN, $state, $rootScope) {
         return $http.post(ATN.API_URL + "/questions", newQuestion);
       },
       editQuestion: function() {
-        return 'just testing';
+
       },
       deleteQuestion: function(slug) {
         return $http.delete(ATN.API_URL + "/questions/" + slug);

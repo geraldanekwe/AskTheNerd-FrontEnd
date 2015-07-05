@@ -7,6 +7,7 @@
       };
     })
     .controller('NewQuestionCtrl', function($scope, Question, User, $state, $rootScope) {
+      User.init();
       $scope.question = {};
       $scope.question.email = $rootScope.activeUser || "Login to Ask the Nerds";
       $scope.activeUser = function() {
@@ -36,11 +37,11 @@
     })
     .controller('QuestionCtrl', function($scope, $rootScope, Question, Answer, User, $state) {
       $scope.slug = $state.params.slug;
+      User.init();
 
       Question.getOne($state.params.slug)
         .success(function(data) {
           $scope.question = data;
-          $scope.isEditClicked = true;
           $scope.isLoggedInUser = $rootScope.activeUser === $scope.question.email;
           $scope.activateEditOrDelete = function() {
             var noAnswers = $scope.question.answers.length === 0;
@@ -57,9 +58,12 @@
       $scope.activeUser = function() {
         return User.activeUser();
       };
+
       $scope.editQuestion = function() {
-        Question.editQuestion();
-        // $scope.isEditClicked === false ? $scope.isEditClicked === false: $scope.isEditClicked === true;
+        // Question.editQuestion();
+
+
+        $scope.isEditClicked = !$scope.isEditClicked;
         console.log($scope.isEditClicked);
       };
 

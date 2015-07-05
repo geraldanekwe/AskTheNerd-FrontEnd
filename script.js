@@ -7,7 +7,7 @@ app.constant("ATN", {
     "fbRef": new Firebase("https://askthenerd.firebaseio.com/")
   })
   .run(function(User) {
-    User.init();
+
   })
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
@@ -50,7 +50,13 @@ app.constant("ATN", {
   .directive('entryForm', function() {
     return {
       restrict: 'E',
-      template: '<form class="form-horizontal" accept-charset="UTF-8" method="post" ng-submit="askQuestion()"> <div class="form-group"> <label for="inputEmail" class="col-sm-2 control-label">Email</label> <div class="col-sm-10"> <p>{{question.email}}</p> </div> </div> <div class="form-group"> <label for="inputQuestion" class="col-sm-2 control-label">Question</label> <div class="col-sm-10"> <textarea class="form-control" ng-model="question.body" id="inputQuestion" placeholder="What would you like to know" required></textarea> </div> </div> <div class="form-group"> <div class="col-sm-10 col-sm-offset-2"> <button type="submit" ng-disabled="activeUser()" class="btn btn-primary">Submit</button> </div> </div> </form>'
+      templateUrl: 'entryform.html'
+    };
+  })
+  .directive('navigationBar', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'navbar.html'
     };
   })
   .filter("dateInWords", function() {
