@@ -2,18 +2,12 @@
       $scope.logout = function() {
         User.logout($rootScope.activeUser);
       };
-      // $scope.activeUser = function() {
-      //   return User.activeUser();
-      // };
-
     })
     .controller('NewQuestionCtrl', function($scope, Question, User, $state, $rootScope) {
       User.init();
       $scope.question = {};
-      $scope.question.email = $rootScope.activeUser || "Login to Ask the Nerds";
-      // $scope.activeUser = function() {
-      //   return User.activeUser();
-      // };
+      $scope.question.email = $rootScope.activeUser;
+
       $scope.askQuestion = function() {
         Question.addQuestion($scope.question)
           .success(function(data) {
@@ -22,6 +16,7 @@
           })
           .catch(function(err) {
             console.error(err);
+            $state.go("404");
           })
       };
     })
@@ -42,10 +37,10 @@
 
       Question.getOne($state.params.slug)
         .success(function(data) {
-          $scope.question = data;
-          $scope.isLoggedInUser = $rootScope.activeUser === $scope.question.email;
+          $scope.singleQuestion = data;
+          $scope.isLoggedInUser = $rootScope.activeUser === $scope.singleQuestion.email;
           $scope.activateEditOrDelete = function() {
-            var noAnswers = $scope.question.answers.length === 0;
+            var noAnswers = $scope.singleQuestion.answers.length === 0;
             return $scope.isLoggedInUser && noAnswers;
           };
           $scope.isUser = function() {
@@ -56,28 +51,64 @@
           $state.go("404");
         });
 
-
+      $scope.showEditForm = function() {
+        $scope.isEditClicked = !$scope.isEditClicked;
+        Question.getOne($state.params.slug)
+          .success(function(data) {
+            $scope.question = data;
+            $scope.question.email = $rootScope.activeUser;
+          }).catch(function(err) {
+            console.error(err);
+            $state.go("404");
+          });
+      };
 
       $scope.editQuestion = function() {
-        Question.editQuestion($state.params.slug, $scope.question);
-
-
+        Question.editQuestion($state.params.slug, $scope.question)
+          .success(function(data) {
+            $state.go("home");
+          })
+          .catch(function(err) {
+            console.error(err);
+            $state.go("404");
+          });
         $scope.isEditClicked = !$scope.isEditClicked;
-        console.log($scope.isEditClicked);
+
+      };
+
+      $scope.showAnswerForm = function() {
+        $scope.isAddClicked = !$scope.isAddClicked;
+        Question.getOne($state.params.slug)
+          .success(function(data) {
+            $scope.question = data;
+            $scope.question.body = "";
+            $scope.question.email = $rootScope.activeUser;
+          }).catch(function(err) {
+            console.error(err);
+            $state.go("404");
+          });
+      };
+
+      $scope.addAnswer = function() {
+        Answer.addAnswer($scope.question, $scope.slug)
+          .success(function(data) {
+            $scope.question = data;
+            $scope.isAddClicked = !$scope.isAddClicked;
+          }).catch(function(err) {
+            console.error(err);
+            $state.go("404");
+          });
       };
 
       $scope.deleteQuestion = function() {
-        Question.deleteQuestion($state.params.slug);
-      };
-
-
-      $scope.addAnswer = function() {
-        Answer.addAnswer($scope.answer, $scope.slug).success(function(data) {
-          $scope.question = data;
-          $scope.answer = {};
-        }).catch(function(err) {
-          console.error(err);
-        });
+        Question.deleteQuestion($state.params.slug)
+          .success(function(data) {
+            $state.go("home");
+          })
+          .catch(function(err) {
+            console.error(err);
+            $state.go("404");
+          });
       };
     })
     .controller('MainCtrl', function($scope, Question, User) {

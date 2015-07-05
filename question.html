@@ -5,27 +5,32 @@
     </a>
   </div>
   <div class="media-body">
-    <h4 class="media-heading">{{question.email}} asked:</h4>
-    <div class="time hidden-xs">{{ question.createdAt | dateInWords }}</div>
-    <div>{{question.body}}</div>
+    <h4 class="media-heading">{{singleQuestion.email}} asked:</h4>
+    <div class="time hidden-xs">{{ singleQuestion.createdAt | dateInWords }}</div>
+    <div>{{singleQuestion.body}}</div>
   </div>
 </div>
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" ng-hide="isUser()">
+<button class="btn btn-primary" type="button" ng-hide="isUser()" ng-click="showAnswerForm()">
   Write Answer
 </button>
-<button class="btn btn-primary" type="button" ng-if="activateEditOrDelete()" ng-click="editQuestion()">
+<button class="btn btn-primary" type="button" ng-if="activateEditOrDelete()" ng-click="showEditForm()">
   Edit Question
 </button>
 <button class="btn btn-primary" type="button" ng-if="activateEditOrDelete()" ng-click="deleteQuestion()">
   Delete Question
 </button>
+<br>
+<br>
 <form class="form-horizontal" accept-charset="UTF-8" method="post" ng-submit="editQuestion()">
   <entry-form ng-show="isEditClicked"></entry-form>
+</form>
+<form class="form-horizontal" accept-charset="UTF-8" method="post" ng-submit="addAnswer()">
+  <entry-form ng-show="isAddClicked"></entry-form>
 </form>
 <br>
 <br>
 <div class="boxes">
-  <div class="media" ng-repeat="answer in question.answers">
+  <div class="media" ng-repeat="answer in singleQuestion.answers">
     <div class="media-left">
       <a href="#">
         <img class="media-object" ng-src="{{answer.gravatarUrl}}">
