@@ -3,7 +3,7 @@
 var app = angular.module('heimdall', ['ui.router']);
 
 app.constant("ATN", {
-    "API_URL": "http://localhost:3000",
+    "API_URL": "https://pure-sands-8046.herokuapp.com/",
     "fbRef": new Firebase("https://askthenerd.firebaseio.com/")
   })
   .run(function(User) {
