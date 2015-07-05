@@ -2,6 +2,9 @@
       $scope.logout = function() {
         User.logout($rootScope.activeUser);
       };
+      $scope.isUser = function() {
+        return $scope.isLoggedInUser;
+      };
     })
     .controller('NewQuestionCtrl', function($scope, Question, User, $state, $rootScope) {
       User.init();

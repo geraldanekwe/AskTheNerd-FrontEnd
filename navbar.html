@@ -24,7 +24,7 @@
           <form><a ui-sref="signup" class="btn btn-primary navbar-btn btn-sm">Sign Up</a></form>
         </li>
         <li>
-          <form><a ui-sref="new" class="btn btn-primary navbar-btn btn-sm">Ask Question</a></form>
+          <form><a ui-sref="new" class="btn btn-primary navbar-btn btn-sm" ng-show="isUser()">Ask Question</a></form>
         </li>
       </ul>
     </div>
