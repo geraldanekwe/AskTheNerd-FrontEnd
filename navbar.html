@@ -17,7 +17,8 @@
           </form>
         </li>
         <li id="logout-btn">
-          <form><a class="btn btn-primary navbar-btn btn-sm" ng-hide="isUser()" ng-click="logout()">Logout</a></form>
+          <form><a class="btn btn-primary navbar-btn btn-sm" ng-hide="!activeUser
+" ng-click="logout()">Logout</a></form>
         </li>
         <li id="signup-btn">
           <form><a ui-sref="signup" class="btn btn-primary navbar-btn btn-sm">Sign Up</a></form>
