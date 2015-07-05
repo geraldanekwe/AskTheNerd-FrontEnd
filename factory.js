@@ -51,8 +51,8 @@ app.factory('User', function($http, ATN, $state, $rootScope) {
       addQuestion: function(newQuestion) {
         return $http.post(ATN.API_URL + "/questions", newQuestion);
       },
-      editQuestion: function() {
-
+      editQuestion: function(slug, updatedQuestion) {
+        return $http.patch(ATN.API_URL + "/questions/" + slug, updatedQuestion);
       },
       deleteQuestion: function(slug) {
         return $http.delete(ATN.API_URL + "/questions/" + slug);

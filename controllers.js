@@ -59,7 +59,7 @@
 
 
       $scope.editQuestion = function() {
-        console.log($scope.question);
+        Question.editQuestion($state.params.slug, $scope.question);
 
 
         $scope.isEditClicked = !$scope.isEditClicked;

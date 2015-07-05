@@ -19,7 +19,9 @@
 <button class="btn btn-primary" type="button" ng-if="activateEditOrDelete()" ng-click="deleteQuestion()">
   Delete Question
 </button>
-<entry-form ng-show="isEditClicked"></entry-form>
+<form class="form-horizontal" accept-charset="UTF-8" method="post" ng-submit="editQuestion()">
+  <entry-form ng-show="isEditClicked"></entry-form>
+</form>
 <br>
 <br>
 <div class="boxes">
