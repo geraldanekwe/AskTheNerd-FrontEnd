@@ -71,7 +71,8 @@
       $scope.editQuestion = function() {
         Question.editQuestion($state.params.slug, $scope.question)
           .success(function(data) {
-            $state.go("home");
+            // $state.go("home");
+            $scope.$apply();
           })
           .catch(function(err) {
             console.error(err);
@@ -100,7 +101,6 @@
             $scope.singleQuestion = data;
             $scope.isAddClicked = !$scope.isAddClicked;
             $scope.$apply();
-            // $location.path('/' + $state.params.slug);
           }).catch(function(err) {
             console.error(err);
             $state.go("404");
