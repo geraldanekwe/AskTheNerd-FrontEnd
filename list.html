@@ -17,6 +17,8 @@
       <h4 class="media-heading">{{question.email}} asked:</h4>
       <div class="time hidden-xs">{{ question.createdAt | dateInWords }}</div>
       <div>{{question.body}}</div>
+      <br>
+      <div>{{question.answers.length}} Answers</div>
       <div class="hidden-xs"><a ui-sref="question({slug: question.slug})" class="btn btn-primary btn-xs">View Answers</a></div>
     </div>
   </div>
