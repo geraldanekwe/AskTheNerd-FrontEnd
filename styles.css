@@ -1,5 +1,5 @@
 * {
-  font-family: 'Handlee', cursive;
+  font-family: 'Lato';
 }
 
 .time {
@@ -25,8 +25,7 @@
 }
 
 #login-btn {
-  width: 100%;
-  margin-right: e5%;
+  margin-right: 5%;
 }
 
 #logout-btn {
@@ -48,4 +47,27 @@
 
 .header {
   text-align: center;
+}
+
+.navbar-inverse {
+  background-color: #C0D6E4;
+}
+
+.signup-container {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #E5EEF4;
+  padding: 5%;
+}
+
+.media {
+  background-color: #F9FBFC;
+  padding: 2%;
+  border: 1px solid #AEAFB0;
+}
+
+.btn-primary {
+  color: #858C90;
+  background-color: #DFEAF1;
+  border-color: #DFEAF1;
 }
