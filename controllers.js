@@ -99,6 +99,7 @@
           .success(function(data) {
             $scope.singleQuestion = data;
             $scope.isAddClicked = !$scope.isAddClicked;
+            $location.path('/' + $state.params.slug);
           }).catch(function(err) {
             console.error(err);
             $state.go("404");
