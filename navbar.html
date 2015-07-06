@@ -11,6 +11,11 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form>
+            <a ui-sref="new" class="btn btn-primary navbar-btn btn-sm" ng-hide="!activeUser">Ask Question</a>
+          </form>
+        </li>
         <li id="login-btn">
           <form class="login">
             <a ui-sref="login" ng-hide="activeUser" class="btn btn-primary navbar-btn btn-sm">Login</a>
@@ -22,10 +27,6 @@
         </li>
         <li id="signup-btn">
           <form><a ui-sref="signup" class="btn btn-primary navbar-btn btn-sm">Sign Up</a></form>
-        </li>
-        <li>
-          <form><a ui-sref="new" class="btn btn-primary navbar-btn btn-sm" ng-hide="!activeUser
-">Ask Question</a></form>
         </li>
       </ul>
     </div>
