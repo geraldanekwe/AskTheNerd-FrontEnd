@@ -71,7 +71,7 @@
       $scope.editQuestion = function() {
         Question.editQuestion($state.params.slug, $scope.question)
           .success(function(data) {
-            // $state.go("home");
+            $scope.singleQuestion = data;
             $scope.$apply();
           })
           .catch(function(err) {
