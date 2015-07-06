@@ -32,7 +32,6 @@
       }
     })
     .controller('QuestionCtrl', function($scope, $rootScope, Question, Answer, User, $state) {
-      $scope.slug = $state.params.slug;
       User.init();
 
       Question.getOne($state.params.slug)
@@ -96,12 +95,9 @@
       };
 
       $scope.addAnswer = function() {
-        Answer.addAnswer($scope.question, $scope.slug)
-          .success(function() {
-            Question.getOne($state.params.slug)
-              .success(function(data) {
-                $scope.question = data;
-              });
+        Answer.addAnswer($scope.question, $state.params.slug)
+          .success(function(data) {
+            $scope.singleQuestion = data;
             $scope.isAddClicked = !$scope.isAddClicked;
           }).catch(function(err) {
             console.error(err);
