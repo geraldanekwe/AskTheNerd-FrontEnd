@@ -97,8 +97,11 @@
 
       $scope.addAnswer = function() {
         Answer.addAnswer($scope.question, $scope.slug)
-          .success(function(data) {
-            $scope.question = data;
+          .success(function() {
+            Question.getOne($state.params.slug)
+              .success(function(data) {
+                $scope.question = data;
+              });
             $scope.isAddClicked = !$scope.isAddClicked;
           }).catch(function(err) {
             console.error(err);
